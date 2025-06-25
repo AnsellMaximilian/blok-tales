@@ -1,11 +1,12 @@
-import { storyblokEditable, type SbBlokData } from "@storyblok/react";
+import { storyblokEditable } from "@storyblok/react";
+import type { NarrationBlok } from "../../types/bloks";
 
-const Narration = ({ blok }: { blok: SbBlokData }) => (
+const Narration = ({ blok }: { blok: NarrationBlok }) => (
   <div
     {...storyblokEditable(blok)}
     className="text-white bg-amber-600 border-4 border-amber-800 p-4"
   >
-    {blok.text as string}
+    {blok.text}
   </div>
 );
 

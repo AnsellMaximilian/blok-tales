@@ -1,10 +1,7 @@
-import {
-  StoryblokComponent,
-  storyblokEditable,
-  type SbBlokData,
-} from "@storyblok/react";
+import { StoryblokComponent, storyblokEditable } from "@storyblok/react";
+import type { DialogBlok } from "../../types/bloks";
 
-const Dialog = ({ blok }: { blok: SbBlokData }) => {
+const Dialog = ({ blok }: { blok: DialogBlok }) => {
   console.log({ char: blok });
   return (
     <div {...storyblokEditable(blok)}>
@@ -14,7 +11,14 @@ const Dialog = ({ blok }: { blok: SbBlokData }) => {
         })}
       </div>
       <div className="text-white bg-amber-600 border-4 border-amber-800 p-4 relative z-20 min-h-44">
-        <div>{blok.characters?.map((char) => `${char.name}, `)}</div>
+        <div>
+          {blok.characters?.map((char, index) => (
+            <strong key={char._uid}>
+              {char.name}
+              {index < blok.characters.length - 1 ? ", " : ""}
+            </strong>
+          ))}
+        </div>
         {blok.text as string}
       </div>
     </div>

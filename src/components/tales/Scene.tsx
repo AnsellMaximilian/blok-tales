@@ -4,8 +4,6 @@ import type { SceneBlok } from "../../types/bloks";
 import { AnimatePresence, motion } from "framer-motion";
 
 const Scene = ({ blok }: { blok: SceneBlok }) => {
-  //   console.log({ blok });
-
   const [progression, setProgression] = useState(0);
 
   const bg = blok?.background?.filename;
@@ -14,8 +12,6 @@ const Scene = ({ blok }: { blok: SceneBlok }) => {
     blok?.content && blok.content[progression]
       ? blok.content[progression]
       : null;
-
-  console.log({ currentContent });
 
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -32,11 +28,11 @@ const Scene = ({ blok }: { blok: SceneBlok }) => {
   return (
     <main
       {...storyblokEditable(blok)}
-      className="w-screen h-screen overflow-hidden relative p-4 flex flex-col"
+      className="w-screen h-screen overflow-hidden relative p-4 flex flex-col bg-no-repeat bg-cover bg-center"
       onMouseDown={handleClick}
       onContextMenu={(e) => e.preventDefault()}
       style={{
-        background: bg ? `url('${bg}')` : undefined,
+        backgroundImage: bg ? `url('${bg}')` : undefined,
       }}
     >
       <div className="mt-auto">

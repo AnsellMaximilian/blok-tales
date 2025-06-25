@@ -11,6 +11,7 @@ import Scene from "./components/tales/Scene.tsx";
 import Narration from "./components/tales/Narration.tsx";
 import Dialog from "./components/tales/Dialog.tsx";
 import Character from "./components/tales/Character.tsx";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 storyblokInit({
   accessToken: "jdeMxRmerezgRgrCm0SMLgtt",
@@ -31,6 +32,10 @@ storyblokInit({
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/*" element={<App />} />
+      </Routes>
+    </BrowserRouter>
   </StrictMode>
 );

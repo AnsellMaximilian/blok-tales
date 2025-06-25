@@ -1,5 +1,7 @@
 import type { SbBlokData } from "@storyblok/react";
 
+export type CharacterSide = "LEFT" | "RIGHT";
+
 export interface SbAsset {
   filename: string | null;
   id: number;
@@ -16,6 +18,7 @@ export interface SbAsset {
 export interface CharacterBlok extends SbBlokData {
   name: string;
   image: SbAsset;
+  side: CharacterSide;
 }
 
 export interface DialogBlok extends SbBlokData {
@@ -25,6 +28,11 @@ export interface DialogBlok extends SbBlokData {
 
 export interface NarrationBlok extends SbBlokData {
   text: string;
+}
+
+export interface ChoiceBlok extends SbBlokData {
+  label: string;
+  next_scene: string[];
 }
 
 export interface SceneBlok extends SbBlokData {

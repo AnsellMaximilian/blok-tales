@@ -6,7 +6,10 @@ function App() {
     window.location.pathname === "/"
       ? "home"
       : window.location.pathname.replace("/", "");
-  const story = useStoryblok(slug, { version: "draft" });
+  const story = useStoryblok(slug, {
+    version: "draft",
+    resolve_relations: "choice.next_scene",
+  });
   if (!story || !story.content) {
     return <div>Loading...</div>;
   }

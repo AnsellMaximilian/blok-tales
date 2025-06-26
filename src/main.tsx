@@ -13,7 +13,7 @@ import Choice from "./components/tales/Choice.tsx";
 import Menu from "./components/tales/Menu.tsx";
 
 storyblokInit({
-  accessToken: "jdeMxRmerezgRgrCm0SMLgtt",
+  accessToken: import.meta.env.VITE_ACCESS_TOKEN,
   use: [apiPlugin],
   components: {
     //tales

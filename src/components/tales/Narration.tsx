@@ -1,13 +1,11 @@
 import { storyblokEditable } from "@storyblok/react";
 import type { NarrationBlok } from "../../types/bloks";
+import TextContainer from "../ui/TextContainer";
 
 const Narration = ({ blok }: { blok: NarrationBlok }) => (
-  <div
-    {...storyblokEditable(blok)}
-    className="text-white bg-amber-600 border-4 border-amber-800 p-4"
-  >
+  <TextContainer {...storyblokEditable(blok)} className="min-h-44">
     {blok.text}
-  </div>
+  </TextContainer>
 );
 
 export default Narration;

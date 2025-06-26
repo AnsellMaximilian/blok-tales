@@ -8,22 +8,23 @@ const Scene = ({ blok }: { blok: SceneBlok }) => {
 
   const bg = blok?.background?.filename;
 
-  const currentContent =
-    blok?.content && blok.content[progression]
-      ? blok.content[progression]
-      : null;
-
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
 
     if (e.button === 0) {
       // Left click = forward
-      setProgression((prev) => Math.min(prev + 1, blok.content.length - 1));
+      setProgression((prev) => Math.min(prev + 1, blok.content.length));
     } else if (e.button === 2) {
       // Right click = backward
       setProgression((prev) => Math.max(prev - 1, 0));
     }
   };
+
+  const isInChoiceState = progression >= blok.content.length;
+
+  const currentContent = blok.content[progression]
+    ? blok.content[progression]
+    : null;
 
   return (
     <main
@@ -46,6 +47,21 @@ const Scene = ({ blok }: { blok: SceneBlok }) => {
               transition={{ duration: 0.4, ease: "easeOut" }}
             >
               <StoryblokComponent blok={currentContent} />
+            </motion.div>
+          )}
+
+          {isInChoiceState && (
+            <motion.div
+              key="choices"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="space-y-2"
+            >
+              {blok.choices.map((choice) => (
+                <StoryblokComponent blok={choice} />
+              ))}
             </motion.div>
           )}
         </AnimatePresence>

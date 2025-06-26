@@ -13,6 +13,7 @@ function App() {
   if (!story || !story.content) {
     return <div>Loading...</div>;
   }
+
   return <StoryblokComponent blok={story.content} />;
 }
 

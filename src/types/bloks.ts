@@ -1,4 +1,4 @@
-import type { SbBlokData } from "@storyblok/react";
+import type { ISbStoryData, SbBlokData } from "@storyblok/react";
 
 export type CharacterSide = "LEFT" | "RIGHT";
 
@@ -32,11 +32,12 @@ export interface NarrationBlok extends SbBlokData {
 
 export interface ChoiceBlok extends SbBlokData {
   label: string;
-  next_scene: string[];
+  next_scene: (string | ISbStoryData)[];
 }
 
 export interface SceneBlok extends SbBlokData {
   content: (NarrationBlok | DialogBlok)[];
   background: SbAsset;
   music: SbAsset;
+  choices: ChoiceBlok[];
 }

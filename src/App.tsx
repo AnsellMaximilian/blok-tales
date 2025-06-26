@@ -13,7 +13,14 @@ function App() {
     resolve_relations: ["choice.next_scene", "menu.scene"],
   });
   if (!story || !story.content) {
-    return <div>Loading...</div>;
+    return (
+      <div className="w-screen h-screen bg-black flex items-center justify-center">
+        <div className="text-green-400 font-share-tech-mono text-xl tracking-wider animate-flicker text-center">
+          <div>INITIALIZING SYSTEM...</div>
+          <div className="mt-2 animate-pulse text-2xl">█</div>
+        </div>
+      </div>
+    );
   }
 
   return <StoryblokComponent blok={story.content} />;

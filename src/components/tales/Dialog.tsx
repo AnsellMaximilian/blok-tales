@@ -1,11 +1,12 @@
 import { StoryblokComponent, storyblokEditable } from "@storyblok/react";
 import type { DialogBlok } from "../../types/bloks";
+import TextContainer from "../ui/TextContainer";
 
 const Dialog = ({ blok }: { blok: DialogBlok }) => {
   console.log(blok.characters);
   return (
     <div {...storyblokEditable(blok)}>
-      <div className="relative">
+      <div className="relative flex">
         <div className="-mb-16 flex justify-start w-1/2">
           {blok.characters
             .filter((char) => char.side === "LEFT")
@@ -21,7 +22,7 @@ const Dialog = ({ blok }: { blok: DialogBlok }) => {
             })}
         </div>
       </div>
-      <div className="text-white bg-amber-600 border-4 border-amber-800 p-4 relative z-20 min-h-44">
+      <TextContainer className="relative z-20 min-h-44">
         <div>
           {blok.characters?.map((char, index) => (
             <strong key={char._uid}>
@@ -31,7 +32,7 @@ const Dialog = ({ blok }: { blok: DialogBlok }) => {
           ))}
         </div>
         {blok.text as string}
-      </div>
+      </TextContainer>
     </div>
   );
 };

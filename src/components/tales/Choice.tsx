@@ -10,7 +10,7 @@ const Choice = ({ blok }: { blok: ChoiceBlok }) => {
   return (
     <TextContainer
       {...storyblokEditable(blok)}
-      className="cursor-pointer"
+      className="transition hover:shadow-[0_0_20px_#00ff88] hover:scale-[1.02] hover:border-green-400 cursor-pointer duration-200 ease-in-out"
       onClick={() => {
         if (isNextSceneBlok) {
           const nextScene = blok.next_scene[0] as ISbStoryData;

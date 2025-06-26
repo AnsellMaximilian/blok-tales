@@ -41,3 +41,9 @@ export interface SceneBlok extends SbBlokData {
   music: SbAsset;
   choices: ChoiceBlok[];
 }
+
+export interface MenuBlok extends SbBlokData {
+  title: string;
+  scene: (string | ISbStoryData)[];
+  background: SbAsset;
+}

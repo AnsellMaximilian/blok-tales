@@ -1,14 +1,16 @@
+import { useLocation } from "react-router-dom";
 import "./App.css";
 import { StoryblokComponent, useStoryblok } from "@storyblok/react";
 
 function App() {
+  const location = useLocation();
+
   const slug =
-    window.location.pathname === "/"
-      ? "home"
-      : window.location.pathname.replace("/", "");
+    location.pathname === "/" ? "main-menu" : location.pathname.slice(1);
+
   const story = useStoryblok(slug, {
     version: "draft",
-    resolve_relations: "choice.next_scene",
+    resolve_relations: ["choice.next_scene", "menu.scene"],
   });
   if (!story || !story.content) {
     return <div>Loading...</div>;

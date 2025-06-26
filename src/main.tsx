@@ -13,6 +13,7 @@ import Dialog from "./components/tales/Dialog.tsx";
 import Character from "./components/tales/Character.tsx";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Choice from "./components/tales/Choice.tsx";
+import Menu from "./components/tales/Menu.tsx";
 
 storyblokInit({
   accessToken: "jdeMxRmerezgRgrCm0SMLgtt",
@@ -29,6 +30,8 @@ storyblokInit({
     dialog: Dialog,
     character: Character,
     choice: Choice,
+
+    menu: Menu,
   },
 });
 

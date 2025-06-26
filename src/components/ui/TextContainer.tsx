@@ -9,7 +9,7 @@ export default function TextContainer({
 }: TextContainerProps) {
   return (
     <div
-      className={`bg-black text-green-400 border-4 border-green-600 font-share-tech-mono p-4 rounded-sm shadow-lg tracking-wide ${className}`}
+      className={`bg-black text-green-400 border-4 border-green-600 stm-font text-lg p-4 rounded-sm shadow-lg tracking-wide ${className}`}
       {...rest}
     >
       {children}

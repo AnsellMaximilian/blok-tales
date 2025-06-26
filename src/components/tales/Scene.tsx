@@ -1,10 +1,20 @@
 import { StoryblokComponent, storyblokEditable } from "@storyblok/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { SceneBlok } from "../../types/bloks";
 import { AnimatePresence, motion } from "framer-motion";
+import { useLocation } from "react-router-dom";
 
 const Scene = ({ blok }: { blok: SceneBlok }) => {
+  const location = useLocation();
   const [progression, setProgression] = useState(0);
+
+  useEffect(() => {
+    const timeOut = setTimeout(() => setProgression(0), 300);
+
+    return () => {
+      clearTimeout(timeOut);
+    };
+  }, [location.pathname]);
 
   const bg = blok?.background?.filename;
 
